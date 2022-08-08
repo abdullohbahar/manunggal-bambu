@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\ProdukController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -21,4 +23,6 @@ Route::get('/', function () {
 Route::get('/admin/login', [AuthController::class, 'index'])->name('login');
 
 Route::group(['prefix' => 'admin'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
 });
