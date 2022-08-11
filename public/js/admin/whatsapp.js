@@ -24,3 +24,32 @@ $("#submitData").on("submit", function (e) {
         },
     });
 });
+
+$("body").on("click", "#deleteWhatsapp", function () {
+    var id = $(this).data("id");
+    var no = $(this).data("no");
+
+    Swal.fire({
+        title: `Apakah Anda Benar-Benar Ingin Menghapus Nomor ${no}?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "/admin/destroy-whatsapp/" + id,
+                dataType: "json",
+                type: "DELETE",
+                success: function (response) {
+                    if (response.status == 200) {
+                        redirectLocation = "/admin/whatsapp";
+
+                        success(response.message, redirectLocation);
+                    }
+                },
+            });
+        }
+    });
+});

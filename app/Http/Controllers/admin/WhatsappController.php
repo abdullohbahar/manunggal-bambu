@@ -23,7 +23,8 @@ class WhatsappController extends Controller
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
                     return ' <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                       <a href="javascript:void(0)" class="btn btn-danger" data-id="' . $item->id . '" id="deletePembelian">Hapus</a>
+                       <a href="javascript:void(0)" class="btn btn-warning" data-id="' . $item->id . '" data-no="' . $item->no_whatsapp . '" id="editWhatsapp">Edit</a>
+                       <a href="javascript:void(0)" class="btn btn-danger" data-id="' . $item->id . '" data-no="' . $item->no_whatsapp . '" id="deleteWhatsapp">Hapus</a>
                     </div>
                     ';
                 })
@@ -117,6 +118,17 @@ class WhatsappController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $delete = Whatsapp::destroy($id);
+        if ($delete) {
+            return response()->json([
+                'status' => 200,
+                'message' => 'Nomor Whatsapp Berhasil Dihapus'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => 'Internal Server Error'
+            ]);
+        }
     }
 }

@@ -34,4 +34,5 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/whatsapp', [WhatsappController::class, 'index'])->name('whatsapp');
     Route::get('/create-whatsapp', [WhatsappController::class, 'create'])->name('create-whatsapp');
     Route::post('/store-whatsapp', [WhatsappController::class, 'store'])->name('store-whatsapp');
+    Route::delete('/destroy-whatsapp/{id}', [WhatsappController::class, 'destroy'])->name('destroy-whatsapp');
 });

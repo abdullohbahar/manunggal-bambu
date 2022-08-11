@@ -65,6 +65,7 @@
 @endsection
 
 @push('addons-js')
+<script src="{{ asset('./js/admin/whatsapp.js') }}"></script>
 <script>
   $("#example1").DataTable({
     processing: true,
