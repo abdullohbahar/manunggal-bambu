@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
+use App\Models\Whatsapp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\Facades\DataTables;
 
-
-class ProdukController extends Controller
+class WhatsappController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,7 +18,7 @@ class ProdukController extends Controller
     public function index()
     {
         if (request()->ajax()) {
-            $query = Product::orderBy('nama_produk', 'asc');
+            $query = Whatsapp::orderBy('no_whatsapp', 'asc');
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
@@ -31,8 +31,9 @@ class ProdukController extends Controller
                 ->make(true);
         }
 
-        $active = 'produk';
-        return view('admin.product.product', compact('active'));
+        $active = "whatsapp";
+
+        return view('admin.whatsapp.whatsapp', compact('active'));
     }
 
     /**
@@ -42,8 +43,8 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        $active = 'produk';
-        return view('admin.product.create-product', compact('active'));
+        $active = 'whatsapp';
+        return view('admin.whatsapp.create-whatsapp', compact('active'));
     }
 
     /**
@@ -54,6 +55,24 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+        $validateData = Validator::make($request->all(), [
+            'nama_pemilik_whatsapp' => 'required',
+            'no_whatsapp' => 'required|unique:whatsapps,no_whatsapp',
+        ]);
+
+        if ($validateData->fails()) {
+            return response()->json([
+                'data' => $request->all(),
+                'status' => 400,
+                'errors' => $validateData->getMessageBag()
+            ]);
+        } else {
+            Whatsapp::create($request->all());
+            return response()->json([
+                'status' => 200,
+                'message' => 'Nomor Whatsapp Berhasil Ditambahkan'
+            ]);
+        }
     }
 
     /**

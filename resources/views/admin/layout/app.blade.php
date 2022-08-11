@@ -102,6 +102,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                 </a>
             </li>
+            <li class="nav-item">
+                <a href="{{ route('whatsapp') }}" class="nav-link {{ $active == 'whatsapp' ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-layer-group"></i>
+                    <p>
+                    Whatsapp
+                    </p>
+                </a>
+            </li>
             {{-- <li class="nav-item {{ $active == 'laporan-pembelian' || $active == 'laporan-penjualan' || $active == 'hutang-piutang' || $active == 'laba' ? 'menu-open' : '' }}">
                 <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-clipboard-list"></i>
@@ -178,6 +186,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 {{-- Select 2 --}}
 <script src="{{ asset('plugins/select2/js/select2.full.min.js') }}"></script>
+
+{{-- Alert --}}
+<script src="{{ asset('./js/alert.js') }}"></script>
+
 
 <script>
   $('.select2').select2();

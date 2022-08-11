@@ -1,4 +1,4 @@
-function success(message) {
+function success(message, redirectLocation) {
     $(".is-invalid").removeClass("is-invalid");
 
     Swal.fire({
@@ -10,6 +10,6 @@ function success(message) {
     });
 
     setTimeout(function () {
-        window.location = "";
+        window.location = redirectLocation;
     }, 1450);
 }

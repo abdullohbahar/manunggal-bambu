@@ -32,6 +32,15 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
+                  <div class="card-header">
+                    <div class="row justify-content-end">
+                      <div class="row">
+                        <div class="mx-auto">
+                          <a href="{{ route('create-product') }}" class="btn btn-success">+ Tambah Produk</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                     <div class="card-body">
                       <table id="example1" class="table table-bordered table-striped">
                         <thead>
