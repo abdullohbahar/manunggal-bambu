@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\ProdukController;
+use App\Http\Controllers\admin\WhatsappController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +19,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/admin/login', [AuthController::class, 'index'])->name('login');
+
+Route::group(['prefix' => 'admin'], function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Produk Route
+    Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
+    Route::get('/create-product', [ProdukController::class, 'create'])->name('create-product');
+
+    // Whatsapp Route
+    Route::get('/whatsapp', [WhatsappController::class, 'index'])->name('whatsapp');
+    Route::get('/create-whatsapp', [WhatsappController::class, 'create'])->name('create-whatsapp');
+    Route::post('/store-whatsapp', [WhatsappController::class, 'store'])->name('store-whatsapp');
+    Route::get('/edit-whatsapp/{id}', [WhatsappController::class, 'edit'])->name('edit-whatsapp');
+    Route::put('/update-whatsapp/{id}', [WhatsappController::class, 'update'])->name('update-whatsapp');
+    Route::delete('/destroy-whatsapp/{id}', [WhatsappController::class, 'destroy'])->name('destroy-whatsapp');
 });
