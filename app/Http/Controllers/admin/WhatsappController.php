@@ -23,7 +23,7 @@ class WhatsappController extends Controller
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
                     return ' <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                       <a href="javascript:void(0)" class="btn btn-warning" data-id="' . $item->id . '" data-no="' . $item->no_whatsapp . '" id="editWhatsapp">Edit</a>
+                       <a href="' . route('edit-whatsapp', $item->id) . '" class="btn btn-warning">Edit</a>
                        <a href="javascript:void(0)" class="btn btn-danger" data-id="' . $item->id . '" data-no="' . $item->no_whatsapp . '" id="deleteWhatsapp">Hapus</a>
                     </div>
                     ';
@@ -84,7 +84,6 @@ class WhatsappController extends Controller
      */
     public function show($id)
     {
-        //
     }
 
     /**
@@ -95,7 +94,10 @@ class WhatsappController extends Controller
      */
     public function edit($id)
     {
-        //
+        $whatsapp = Whatsapp::findOrFail($id);
+        $active = "whatsapp";
+
+        return view("admin.whatsapp.edit-whatsapp", compact('whatsapp', 'active'));
     }
 
     /**
@@ -107,7 +109,40 @@ class WhatsappController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cekNama = Whatsapp::where('id', $id)->get();
+
+        if ($request->input('no_whatsapp') != $cekNama[0]->no_whatsapp) {
+            $validateData = Validator::make($request->all(), [
+                'no_whatsapp' => 'required|unique:whatsapps,no_whatsapp',
+                'nama_pemilik_whatsapp' => 'required',
+            ]);
+            if ($validateData->fails()) {
+                return response()->json([
+                    'data' => $request->all(),
+                    'status' => 400,
+                    'errors' => $validateData->getMessageBag()
+                ]);
+            }
+        }
+
+        $validateData = Validator::make($request->all(), [
+            'no_whatsapp' => 'required',
+            'nama_pemilik_whatsapp' => 'required',
+        ]);
+
+        if ($validateData->fails()) {
+            return response()->json([
+                'data' => $request->all(),
+                'status' => 400,
+                'errors' => $validateData->getMessageBag()
+            ]);
+        } else {
+            Whatsapp::where("id", $id)->update($request->all());
+            return response()->json([
+                'status' => 200,
+                'message' => 'Nama Pemilik Nomor Whatsapp Atau Nomor Whatsapp Berhasil Diubah'
+            ]);
+        }
     }
 
     /**
@@ -127,7 +162,7 @@ class WhatsappController extends Controller
         } else {
             return response()->json([
                 'status' => 500,
-                'message' => 'Internal Server Error'
+                'message' => ' Server Error'
             ]);
         }
     }

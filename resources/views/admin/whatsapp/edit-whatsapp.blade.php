@@ -14,12 +14,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Tambah Nomor Whatsapp</h1>
+          <h1 class="m-0">Ubah Nomor Whatsapp</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-            <li class="breadcrumb-item active">Tambah Nomor Whatsapp</li>
+            <li class="breadcrumb-item active">Ubah Nomor Whatsapp</li>
           </ol>
         </div><!-- /.col -->
       </div><!-- /.row -->
@@ -33,12 +33,13 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form id="submitData">
+                        <input type="hidden" name="id" id="id" value="{{ $whatsapp->id }}">
+                        <form id="editData">
                             <div class="row">
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
                                         <label>Nama Pemilik Nomor Whatsapp</label>
-                                        <input type="text" name="nama_pemilik_whatsapp" class="form-control" id="" placeholder="Nama Pemilik Nomor Whatsapp" required>
+                                        <input type="text" name="nama_pemilik_whatsapp" class="form-control" id="" placeholder="Nama Pemilik Nomor Whatsapp" value="{{ $whatsapp->nama_pemilik_whatsapp }}" required>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -48,7 +49,7 @@
                                             <div class="input-group-prepend">
                                                 <label class="input-group-text" for="validatedInputGroupSelect">+62</label>
                                             </div>
-                                            <input type="number" name="no_whatsapp" class="form-control" id="nomorValidation" placeholder="Nomor Whatsapp" required>
+                                            <input type="number" name="no_whatsapp" class="form-control" id="nomorValidation" placeholder="Nomor Whatsapp" value="{{ $whatsapp->no_whatsapp }}" required>
                                             <div class="invalid-feedback" id="nomorValidationMessage">
                                                 Nomor Whatsapp Sudah Terdaftar
                                             </div>
@@ -60,7 +61,7 @@
                             <div class="row">
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-success btn-block">
-                                        Tambah Nomor Whatsapp
+                                        Ubah Nomor Whatsapp
                                     </button>
                                 </div>
                             </div>
