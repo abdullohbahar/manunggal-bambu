@@ -72,6 +72,7 @@ class ProdukController extends Controller
             'gambar' => 'required'
         ]);
 
+        $validateData['harga'] = "Rp. " .  $request->input('harga');
         $validateData['slug'] = Str::slug($request->input('nama_produk'));
 
         // Save picture

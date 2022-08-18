@@ -49,8 +49,13 @@
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
-                                        <label>Harga</label>
-                                        <input type="text" name="harga" class="form-control" value="{{ old('harga') }}" id="" placeholder="Harga">
+                                        <label>Harga Satuan</label>
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="basic-addon2">Rp.</span>
+                                            </div>
+                                            <input type="text" name="harga" class="form-control" value="{{ old('harga') }}" id="harga" placeholder="Harga">
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
