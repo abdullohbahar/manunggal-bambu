@@ -26,7 +26,7 @@ class ProdukController extends Controller
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
                     return ' <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                       <a href="javascript:void(0)" class="btn btn-danger" data-id="' . $item->id . '" id="deletePembelian">Hapus</a>
+                       <a href="javascript:void(0)" class="btn btn-danger" data-id="' . $item->id . '" data-produk="' . $item->nama_produk . '" id="deleteProduk">Hapus</a>
                     </div>
                     ';
                 })
@@ -139,5 +139,22 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
+        // Get Produk
+        $produk = Product::find($id);
+
+        // Delete Produk
+        $delete = Product::destroy($id);
+        if ($delete) {
+            unlink($produk->thumbnail);
+            return response()->json([
+                'status' => 200,
+                'message' => 'Produk Berhasil Dihapus'
+            ]);
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => 'Server Error'
+            ]);
+        }
     }
 }
