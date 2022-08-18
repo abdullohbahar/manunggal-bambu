@@ -46,6 +46,7 @@
                         <thead>
                           <tr>
                             <th>No</th>
+                            <th>Thumbnail Produk</th>
                             <th>Nama Produk</th>
                             <th>Harga Produk</th>
                             <th>Aksi</th>
@@ -91,6 +92,10 @@
             render: (data, type, row, meta) => {
                 return meta.row + meta.settings._iDisplayStart + 1;
             },
+        },
+        {
+            data: "gambar",
+            name: "gambar",
         },
         {
             data: "nama_produk",

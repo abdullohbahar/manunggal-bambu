@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers\admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Product;
+use App\Models\Whatsapp;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Image;
 use Yajra\DataTables\Facades\DataTables;
 
 
@@ -27,7 +30,11 @@ class ProdukController extends Controller
                     </div>
                     ';
                 })
-                ->rawColumns(['action'])
+                ->addColumn('gambar', function ($item) {
+                    return '<img src="/' . $item->thumbnail . '" alt="" srcset="">
+                    ';
+                })
+                ->rawColumns(['action', 'gambar'])
                 ->make(true);
         }
 
@@ -43,7 +50,8 @@ class ProdukController extends Controller
     public function create()
     {
         $active = 'produk';
-        return view('admin.product.create-product', compact('active'));
+        $whatsapps = Whatsapp::get();
+        return view('admin.product.create-product', compact('active', 'whatsapps'));
     }
 
     /**
@@ -54,6 +62,39 @@ class ProdukController extends Controller
      */
     public function store(Request $request)
     {
+        // Validation
+        $validateData = $request->validate([
+            'nama_produk' => 'required|unique:products,nama_produk',
+            'harga' => 'required',
+            'whatsapp_id' => 'required',
+            'deskripsi_produk' => '',
+            'template_pemesanan' => 'required',
+            'gambar' => 'required'
+        ]);
+
+        $validateData['slug'] = Str::slug($request->input('nama_produk'));
+
+        // Save picture
+        $picture = $request->file('gambar');
+
+        // FIle Name
+        $fileName = $validateData['slug'] . '.' . $picture->getClientOriginalExtension();
+
+        // File Location
+        $location = 'image/produk/' . $validateData['slug'];
+
+        // File Path
+        $filePath = 'image/produk/' . $validateData['slug'] . '/' . $fileName;
+
+        // Save File To Folder
+        $picture->move($location, $fileName);
+
+        // Save Filepath to DB
+        $validateData['thumbnail'] = $filePath;
+
+        Product::create($validateData);
+
+        return redirect()->to('admin/produk')->with('message', 'Produk Berhasil Ditambahkan');
     }
 
     /**
@@ -98,6 +139,5 @@ class ProdukController extends Controller
      */
     public function destroy($id)
     {
-        //
     }
 }

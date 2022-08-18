@@ -33,18 +33,24 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="">
+                        <form action="{{ route('store-product') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="row">
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
                                         <label>Nama Produk</label>
-                                        <input type="text" name="nama_produk" class="form-control" id="" placeholder="Nama Produk" required>
+                                        <input type="text" name="nama_produk" class="form-control @error('nama_produk') is-invalid @enderror" value="{{ old('nama_produk') }}" id="" placeholder="Nama Produk" required>
+                                        @error('nama_produk')
+                                            <div class="invalid-feedback" id="nomorValidationMessage">
+                                                Nama Produk Sudah Dipakai
+                                            </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
                                         <label>Harga</label>
-                                        <input type="text" name="nama_produk" class="form-control" id="" placeholder="Harga">
+                                        <input type="text" name="harga" class="form-control" value="{{ old('harga') }}" id="" placeholder="Harga">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
@@ -52,25 +58,31 @@
                                         <label>Nomor Whatsapp</label>
                                         <select name="whatsapp_id" id="" class="form-control" required>
                                             <option value="">-- Pilih Nomor Whatsapp --</option>
-                                            <option value=""></option>
+                                            @foreach ($whatsapps as $whatsapp)
+                                                @if (old('whatsapp_id') == $whatsapp->id)
+                                                    <option value="{{ $whatsapp->id }}" selected>{{ $whatsapp->no_whatsapp }}</option>
+                                                @else
+                                                    <option value="{{ $whatsapp->id }}">{{ $whatsapp->no_whatsapp }}</option>
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label>Deskripsi Produk</label>
-                                        <textarea name="deskripsi_produk" id="" class="form-control"></textarea>
+                                        <textarea name="deskripsi_produk" id="" class="form-control">{{ old('deskripsi_produk') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                                     <div class="form-group">
                                         <label>Template Pemesanan</label>
-                                        <textarea name="template_pemesanan" id="" class="form-control" required></textarea>
+                                        <textarea name="template_pemesanan" id="" class="form-control" required>{{ old('template_pemesanan') }}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
-                                        <label>Gambar Produk</label>
+                                        <label>Thumbnail / Gambar Produk</label>
                                         <input type="file" name="gambar" class="form-control" id="gambar" required>
                                     </div>
                                 </div>

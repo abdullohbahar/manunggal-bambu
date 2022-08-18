@@ -68,7 +68,11 @@ class WhatsappController extends Controller
                 'errors' => $validateData->getMessageBag()
             ]);
         } else {
-            Whatsapp::create($request->all());
+            $data = [
+                'nama_pemilik_whatsapp' => $request->input('nama_pemilik_whatsapp'),
+                'no_whatsapp' => '62' . $request->input('no_whatsapp'),
+            ];
+            Whatsapp::create($data);
             return response()->json([
                 'status' => 200,
                 'message' => 'Nomor Whatsapp Berhasil Ditambahkan'
@@ -137,7 +141,11 @@ class WhatsappController extends Controller
                 'errors' => $validateData->getMessageBag()
             ]);
         } else {
-            Whatsapp::where("id", $id)->update($request->all());
+            $data = [
+                'nama_pemilik_whatsapp' => $request->input('nama_pemilik_whatsapp'),
+                'no_whatsapp' => '62' . $request->input('no_whatsapp'),
+            ];
+            Whatsapp::where("id", $id)->update($data);
             return response()->json([
                 'status' => 200,
                 'message' => 'Nama Pemilik Nomor Whatsapp Atau Nomor Whatsapp Berhasil Diubah'
