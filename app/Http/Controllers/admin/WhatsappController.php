@@ -22,10 +22,9 @@ class WhatsappController extends Controller
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
-                    return ' <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                       <a href="' . route('edit-whatsapp', $item->id) . '" class="btn btn-warning">Edit</a>
-                       <a href="javascript:void(0)" class="btn btn-danger" data-id="' . $item->id . '" data-no="' . $item->no_whatsapp . '" id="deleteWhatsapp">Hapus</a>
-                    </div>
+                    return '
+                       <a href="' . route('edit-whatsapp', $item->id) . '" class="btn btn-warning btn-block btn-sm">Edit</a>
+                       <a href="javascript:void(0)" class="btn btn-danger btn-block btn-sm" data-id="' . $item->id . '" data-no="' . $item->no_whatsapp . '" id="deleteWhatsapp">Hapus</a>
                     ';
                 })
                 ->rawColumns(['action'])

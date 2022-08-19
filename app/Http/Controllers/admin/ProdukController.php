@@ -8,7 +8,9 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Image;
+use App\Models\Optional;
 use Yajra\DataTables\Facades\DataTables;
+use Image as Img;
 
 
 class ProdukController extends Controller
@@ -25,13 +27,14 @@ class ProdukController extends Controller
 
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
-                    return ' <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
-                       <a href="javascript:void(0)" class="btn btn-danger" data-id="' . $item->id . '" data-produk="' . $item->nama_produk . '" id="deleteProduk">Hapus</a>
-                    </div>
+                    return '
+                       <a href="javascript:void(0)" class="btn btn-danger btn-block btn-sm" data-id="' . $item->id . '" data-produk="' . $item->nama_produk . '" id="deleteProduk">Hapus</a>
+                       <a href="javascript:void(0)" class="btn btn-warning btn-block btn-sm">Ubah</a>
+                       <a href="javascript:void(0)" class="btn btn-info btn-block btn-sm">Tambah Gambar</a>
                     ';
                 })
                 ->addColumn('gambar', function ($item) {
-                    return '<img src="/' . $item->thumbnail . '" alt="" srcset="">
+                    return '<img class="img-fluid mx-auto d-block" style="width: 300px; height: 200px" src="/' . $item->thumbnail . '" alt="" srcset="">
                     ';
                 })
                 ->rawColumns(['action', 'gambar'])
@@ -50,8 +53,9 @@ class ProdukController extends Controller
     public function create()
     {
         $active = 'produk';
+        $template = Optional::where('title', 'Template Pemesanan')->first();
         $whatsapps = Whatsapp::get();
-        return view('admin.product.create-product', compact('active', 'whatsapps'));
+        return view('admin.product.create-product', compact('active', 'whatsapps', 'template'));
     }
 
     /**
@@ -84,11 +88,20 @@ class ProdukController extends Controller
         // File Location
         $location = 'image/produk/' . $validateData['slug'];
 
-        // File Path
+        // File Name In Folder
         $filePath = 'image/produk/' . $validateData['slug'] . '/' . $fileName;
 
-        // Save File To Folder
-        $picture->move($location, $fileName);
+        if (!file_exists($location)) {
+            mkdir($location, 666, true);
+        }
+
+        // Image Intervention
+        $img = Img::make($picture->path());
+
+        // Resize image and save image
+        $img->resize(300, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($filePath);
 
         // Save Filepath to DB
         $validateData['thumbnail'] = $filePath;
