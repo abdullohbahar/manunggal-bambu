@@ -30,7 +30,7 @@ class ProdukController extends Controller
                     return '
                        <a href="javascript:void(0)" class="btn btn-danger btn-block btn-sm" data-id="' . $item->id . '" data-produk="' . $item->nama_produk . '" id="deleteProduk">Hapus</a>
                        <a href="javascript:void(0)" class="btn btn-warning btn-block btn-sm">Ubah</a>
-                       <a href="javascript:void(0)" class="btn btn-info btn-block btn-sm">Tambah Gambar</a>
+                       <a href="/admin/add-image-product/' . $item->slug . '" class="btn btn-info btn-block btn-sm">Tambah Gambar</a>
                     ';
                 })
                 ->addColumn('gambar', function ($item) {
@@ -112,6 +112,13 @@ class ProdukController extends Controller
         Product::create($validateData);
 
         return redirect()->to('admin/produk')->with('message', 'Produk Berhasil Ditambahkan');
+    }
+
+    public function addImageProduct($slug)
+    {
+        $active = 'produk';
+        $images = Image::where('product_slug', $slug)->get();
+        return view('admin.product.add-image-product', compact('active', 'images'));
     }
 
     /**

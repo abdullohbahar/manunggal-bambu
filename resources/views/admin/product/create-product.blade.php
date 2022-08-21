@@ -82,8 +82,11 @@
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
                                         <label>Thumbnail / Gambar Produk</label>
-                                        <input type="file" name="gambar" class="form-control" id="gambar" required>
+                                        <input type="file" name="gambar" class="form-control" id="gambar" onchange="previewImage()" required>
                                     </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                    <img class="img-preview img-fluid" style="width: 50%;" alt="">
                                 </div>
                             </div>
                             <div class="row">
@@ -109,6 +112,5 @@
 <script src="//cdn.ckeditor.com/4.19.1/basic/ckeditor.js"></script>
 <script>
     CKEDITOR.replace('deskripsi_produk');
-    CKEDITOR.replace('template_pemesanan');
 </script>
 @endpush

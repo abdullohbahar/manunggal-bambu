@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/create-product', [ProdukController::class, 'create'])->name('create-product');
     Route::post('/store-product', [ProdukController::class, 'store'])->name('store-product');
     Route::delete('/destroy-produk/{id}', [ProdukController::class, 'destroy'])->name('destroy-produk');
+    Route::get('/add-image-product/{slug}', [ProdukController::class, 'addImageProduct'])->name('add-image-product');
 
     // Whatsapp Route
     Route::get('/whatsapp', [WhatsappController::class, 'index'])->name('whatsapp');
