@@ -65,9 +65,9 @@
                                             <option value="">-- Pilih Nomor Whatsapp --</option>
                                             @foreach ($whatsapps as $whatsapp)
                                                 @if (old('whatsapp_id') == $whatsapp->id)
-                                                    <option value="{{ $whatsapp->id }}" selected>{{ $whatsapp->no_whatsapp }}</option>
+                                                    <option value="{{ $whatsapp->id }}" selected>{{ $whatsapp->nama_pemilik_whatsapp }} | {{ $whatsapp->no_whatsapp }}</option>
                                                 @else
-                                                    <option value="{{ $whatsapp->id }}">{{ $whatsapp->no_whatsapp }}</option>
+                                                    <option value="{{ $whatsapp->id }}">{{ $whatsapp->nama_pemilik_whatsapp }} | {{ $whatsapp->no_whatsapp }}</option>
                                                 @endif
                                             @endforeach
                                         </select>
@@ -77,13 +77,6 @@
                                     <div class="form-group">
                                         <label>Deskripsi Produk</label>
                                         <textarea name="deskripsi_produk" id="" class="form-control">{{ old('deskripsi_produk') }}</textarea>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                                    <div class="form-group">
-                                        <label>Template Pemesanan</label>
-                                        {{-- old('template_pemesanan') --}}
-                                        <textarea name="template_pemesanan" id="" class="form-control" required>{!! old('template_pemesanan', $template->body) !!}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
