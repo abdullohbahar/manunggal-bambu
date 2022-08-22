@@ -104,47 +104,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </li>
             <li class="nav-item">
                 <a href="{{ route('whatsapp') }}" class="nav-link {{ $active == 'whatsapp' ? 'active' : '' }}">
-                    <i class="nav-icon fas fa-layer-group"></i>
+                    <i class="nav-icon fab fa-whatsapp"></i>
                     <p>
                     Whatsapp
                     </p>
                 </a>
             </li>
-            {{-- <li class="nav-item {{ $active == 'laporan-pembelian' || $active == 'laporan-penjualan' || $active == 'hutang-piutang' || $active == 'laba' ? 'menu-open' : '' }}">
-                <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-clipboard-list"></i>
-                    <p>
-                        Laporan
-                        <i class="right fas fa-angle-left"></i>
-                    </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                      <a href="{{ route('laporan-pembelian') }}" class="nav-link {{ $active == 'laporan-pembelian' ? 'active' : '' }}">
-                          <i class="far fa-circle nav-icon"></i>
-                          <p>Pembelian</p>
-                      </a>
-                  </li>
-                    <li class="nav-item">
-                        <a href="{{ route('laporan-penjualan') }}" class="nav-link {{ $active == 'laporan-penjualan' ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Penjualan</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('hutang-piutang') }}" class="nav-link {{ $active == 'hutang-piutang' ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Hutang & Piutang</p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('laba') }}" class="nav-link {{ $active == 'laba' ? 'active' : '' }}">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Laba</p>
-                        </a>
-                    </li>
-                </ul>
-            </li> --}}
         </ul>
       </nav>
     </div>

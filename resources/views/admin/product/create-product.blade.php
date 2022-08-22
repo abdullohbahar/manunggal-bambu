@@ -47,7 +47,8 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                                <input type="hidden" name="harga" value="0">
+                                {{-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
                                         <label>Harga Satuan</label>
                                         <div class="input-group">
@@ -57,7 +58,7 @@
                                             <input type="text" name="harga" class="form-control" value="{{ old('harga') }}" id="harga" placeholder="Harga">
                                         </div>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
                                     <div class="form-group">
                                         <label>Nomor Whatsapp</label>
@@ -65,9 +66,9 @@
                                             <option value="">-- Pilih Nomor Whatsapp --</option>
                                             @foreach ($whatsapps as $whatsapp)
                                                 @if (old('whatsapp_id') == $whatsapp->id)
-                                                    <option value="{{ $whatsapp->id }}" selected>{{ $whatsapp->nama_pemilik_whatsapp }} | {{ $whatsapp->no_whatsapp }}</option>
+                                                    <option value="{{ $whatsapp->id }}" selected> {{ $whatsapp->no_whatsapp }}</option>
                                                 @else
-                                                    <option value="{{ $whatsapp->id }}">{{ $whatsapp->nama_pemilik_whatsapp }} | {{ $whatsapp->no_whatsapp }}</option>
+                                                    <option value="{{ $whatsapp->id }}"> {{ $whatsapp->no_whatsapp }}</option>
                                                 @endif
                                             @endforeach
                                         </select>
