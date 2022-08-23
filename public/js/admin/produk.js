@@ -63,3 +63,18 @@ function previewImage() {
         imgPreview.src = oFREvent.target.result;
     };
 }
+
+// Preview Image add product
+function previewImageProduct() {
+    const image = document.querySelector("#foto-produk");
+    const imgPreview = document.querySelector(".img-preview-product");
+
+    imgPreview.style.display = "block";
+
+    const oFReader = new FileReader();
+    oFReader.readAsDataURL(image.files[0]);
+
+    oFReader.onload = function (oFREvent) {
+        imgPreview.src = oFREvent.target.result;
+    };
+}

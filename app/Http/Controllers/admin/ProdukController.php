@@ -34,7 +34,7 @@ class ProdukController extends Controller
                     ';
                 })
                 ->addColumn('gambar', function ($item) {
-                    return '<img class="img-fluid mx-auto d-block" style="width: 300px; height: 200px" src="/' . $item->thumbnail . '" alt="" srcset="">
+                    return '<img class="img-fluid mx-auto d-block img-preview" src="/' . $item->thumbnail . '" alt="" srcset="">
                     ';
                 })
                 ->rawColumns(['action', 'gambar'])
@@ -116,9 +116,63 @@ class ProdukController extends Controller
 
     public function addImageProduct($slug)
     {
+        $slug = $slug;
         $active = 'produk';
         $images = Image::where('product_slug', $slug)->get();
-        return view('admin.product.add-image-product', compact('active', 'images'));
+        $product = Product::where('slug', $slug)->first();
+        return view('admin.product.add-image-product', compact('active', 'images', 'product', 'slug'));
+    }
+
+    public function storeImageProduct(Request $request)
+    {
+        $slug = $request->input('slug');
+        // Save picture
+        $picture = $request->file('gambar');
+
+        // FIle Name
+        $fileName = $slug . time() . '.' . $picture->getClientOriginalExtension();
+
+        // File Location
+        $location = 'image/produk/' . $slug;
+
+        // File Name In Folder
+        $filePath = 'image/produk/' . $slug . '/' . $fileName;
+
+        if (!file_exists($location)) {
+            mkdir($location, 666, true);
+        }
+
+        // Image Intervention
+        $img = Img::make($picture->path());
+
+        // Resize image and save image
+        $img->resize(300, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($filePath);
+
+        // Save to DB
+        $data = [
+            'product_slug' => $slug,
+            'gambar' => $filePath
+        ];
+
+        Image::create($data);
+
+        return redirect()->to('admin/add-image-product/' . $slug)->with('message', 'Foto Produk Berhasil Ditambahkan');
+    }
+
+    public function deleteImageProduct(Request $request, $id)
+    {
+        $slug = $request->input('slug');
+        // Get Produk
+        $produk = Image::find($id);
+
+        // Delete Produk
+        $delete = Image::destroy($id);
+        if ($delete) {
+            unlink($produk->gambar);
+            return redirect()->to('admin/add-image-product/' . $slug)->with('message', 'Foto Produk Berhasil Dihapus');
+        }
     }
 
     /**
