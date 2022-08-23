@@ -41,7 +41,7 @@
 
               <div class="info-box-content">
                 <span class="info-box-text text-bold">Jumlah Barang</span>
-                <span class="info-box-number">1000</span>
+                <span class="info-box-number">{{ $count }}</span>
               </div>
               <!-- /.info-box-content -->
             </div>

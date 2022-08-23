@@ -87,13 +87,13 @@
                         </div>
                         @foreach ($images as $image)
                         <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4 mt-3 mx-auto text-center">
-                            <form action="{{ route('delete-image-product', $image->id) }}" method="POST">
+                            {{-- <form action="{{ route('delete-image-product', $image->id) }}" method="POST">
                               @csrf
-                              @method('delete')
+                              @method('delete') --}}
                               <input type="hidden" name="slug" value="{{ $slug }}">
                               <img class="img-fluid" style="width: 300px; height: 200px;" src="{{ asset($image->gambar) }}" alt="" srcset="">
-                              <button class="btn btn-danger btn-block mt-3 mb-3" type="submit">Hapus Foto Produk</button>
-                            </form>
+                              <button class="btn btn-danger btn-block mt-3 mb-3" id="deleteImageProduk" data-id="{{ $image->id }}" data-slug="{{ $slug }}" type="submit">Hapus Foto Produk</button>
+                            {{-- </form> --}}
                           </div>
                         @endforeach
                       </div>

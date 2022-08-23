@@ -2,6 +2,7 @@
 $("body").on("click", "#deleteProduk", function () {
     var id = $(this).data("id");
     var produk = $(this).data("produk");
+    var slug = $(this).data("slug");
 
     Swal.fire({
         title: `Apakah Anda Benar-Benar Ingin Menghapus Produk ${produk}?`,
@@ -13,15 +14,16 @@ $("body").on("click", "#deleteProduk", function () {
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
-                url: "/admin/destroy-produk/" + id,
+                url: "/admin/destroy-produk/" + id + "/" + slug,
                 dataType: "json",
                 type: "DELETE",
                 success: function (response) {
-                    if (response.status == 200) {
-                        redirectLocation = "/admin/produk";
+                    console.log(response);
+                    // if (response.status == 200) {
+                    //     redirectLocation = "/admin/produk";
 
-                        success(response.message, redirectLocation);
-                    }
+                    //     success(response.message, redirectLocation);
+                    // }
                 },
             });
         }
@@ -78,3 +80,33 @@ function previewImageProduct() {
         imgPreview.src = oFREvent.target.result;
     };
 }
+
+// Delete Image Product
+$("body").on("click", "#deleteImageProduk", function () {
+    var id = $(this).data("id");
+    var slug = $(this).data("slug");
+
+    Swal.fire({
+        title: `Apakah Anda Benar-Benar Ingin Menghapus Foto Produk?`,
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Hapus",
+    }).then((result) => {
+        if (result.isConfirmed) {
+            $.ajax({
+                url: "/admin/delete-image-product/" + id,
+                dataType: "json",
+                type: "DELETE",
+                success: function (response) {
+                    if (response.status == 200) {
+                        redirectLocation = "/admin/add-image-product/" + slug;
+
+                        success(response.message, redirectLocation);
+                    }
+                },
+            });
+        }
+    });
+});

@@ -28,9 +28,9 @@ class ProdukController extends Controller
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
-                       <a href="javascript:void(0)" class="btn btn-danger btn-block btn-sm" data-id="' . $item->id . '" data-produk="' . $item->nama_produk . '" id="deleteProduk">Hapus</a>
-                       <a href="javascript:void(0)" class="btn btn-warning btn-block btn-sm">Ubah</a>
-                       <a href="/admin/add-image-product/' . $item->slug . '" class="btn btn-info btn-block btn-sm">Tambah Gambar</a>
+                        <a href="javascript:void(0)" class="btn btn-warning btn-block btn-sm">Ubah</a>
+                        <a href="javascript:void(0)" class="btn btn-danger btn-block btn-sm" data-slug="' . $item->slug . '" data-id="' . $item->id . '" data-produk="' . $item->nama_produk . '" id="deleteProduk">Hapus</a>
+                        <a href="/admin/add-image-product/' . $item->slug . '" class="btn btn-info btn-block btn-sm">Tambah Foto Produk</a>
                     ';
                 })
                 ->addColumn('gambar', function ($item) {
@@ -161,9 +161,8 @@ class ProdukController extends Controller
         return redirect()->to('admin/add-image-product/' . $slug)->with('message', 'Foto Produk Berhasil Ditambahkan');
     }
 
-    public function deleteImageProduct(Request $request, $id)
+    public function deleteImageProduct($id)
     {
-        $slug = $request->input('slug');
         // Get Produk
         $produk = Image::find($id);
 
@@ -171,7 +170,16 @@ class ProdukController extends Controller
         $delete = Image::destroy($id);
         if ($delete) {
             unlink($produk->gambar);
-            return redirect()->to('admin/add-image-product/' . $slug)->with('message', 'Foto Produk Berhasil Dihapus');
+            return response()->json([
+                'status' => 200,
+                'message' => 'Foto Produk Berhasil Dihapus'
+            ]);
+            // return redirect()->to('admin/add-image-product/' . $slug)->with('message', 'Foto Produk Berhasil Dihapus');
+        } else {
+            return response()->json([
+                'status' => 500,
+                'message' => 'Server Error'
+            ]);
         }
     }
 
@@ -215,7 +223,7 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($id, $slug)
     {
         // Get Produk
         $produk = Product::find($id);
@@ -224,9 +232,17 @@ class ProdukController extends Controller
         $delete = Product::destroy($id);
         if ($delete) {
             unlink($produk->thumbnail);
+
+            $productImages = Image::where('product_slug', $slug)->get();
+            foreach ($productImages as $productImage) {
+                $delete = Image::destroy($productImage->id);
+                unlink($productImage->gambar);
+            }
+
             return response()->json([
                 'status' => 200,
-                'message' => 'Produk Berhasil Dihapus'
+                'message' => 'Produk Berhasil Dihapus',
+                'data' => $productImages
             ]);
         } else {
             return response()->json([
