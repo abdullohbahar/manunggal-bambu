@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\ProdukController;
 use App\Http\Controllers\admin\WhatsappController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,14 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/admin/login', [AuthController::class, 'index'])->name('login');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth');
+Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
     // Produk Route
@@ -45,4 +47,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/edit-whatsapp/{id}', [WhatsappController::class, 'edit'])->name('edit-whatsapp');
     Route::put('/update-whatsapp/{id}', [WhatsappController::class, 'update'])->name('update-whatsapp');
     Route::delete('/destroy-whatsapp/{id}', [WhatsappController::class, 'destroy'])->name('destroy-whatsapp');
+
+    // Profile Route
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 });

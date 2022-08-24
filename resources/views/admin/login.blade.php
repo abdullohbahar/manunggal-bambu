@@ -33,10 +33,10 @@
             {{ session('success') }}
         </div>
         @endif
-      <form action="{{ route('login') }}" method="POST">
+      <form action="{{ route('auth') }}" method="POST">
         @csrf
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="username" placeholder="username" required>
+          <input type="text" class="form-control" name="name" placeholder="username" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
