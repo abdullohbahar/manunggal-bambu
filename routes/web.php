@@ -50,4 +50,5 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
 
     // Profile Route
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::put('/update-profile/{id}', [ProfileController::class, 'update'])->name('update-profile');
 });

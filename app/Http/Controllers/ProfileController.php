@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -69,7 +71,22 @@ class ProfileController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $password = $request->input('password');
+        $name = $request->input('name');
+        if (!empty($password)) {
+            $data = [
+                'name' => $name,
+                'password' => Hash::make($password),
+            ];
+        } else {
+            $data = [
+                'name' => $name
+            ];
+        }
+
+        User::where('id', $id)->update($data);
+
+        return redirect('admin/profile')->with('message', 'Profil Berhasil Diubah');
     }
 
     /**
