@@ -19,11 +19,11 @@ $("body").on("click", "#deleteProduk", function () {
                 type: "DELETE",
                 success: function (response) {
                     console.log(response);
-                    // if (response.status == 200) {
-                    //     redirectLocation = "/admin/produk";
+                    if (response.status == 200) {
+                        redirectLocation = "/admin/produk";
 
-                    //     success(response.message, redirectLocation);
-                    // }
+                        success(response.message, redirectLocation);
+                    }
                 },
             });
         }

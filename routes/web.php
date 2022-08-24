@@ -30,9 +30,12 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/produk', [ProdukController::class, 'index'])->name('produk');
     Route::get('/create-product', [ProdukController::class, 'create'])->name('create-product');
     Route::post('/store-product', [ProdukController::class, 'store'])->name('store-product');
+    Route::get('/edit-product/{slug}', [ProdukController::class, 'edit'])->name('edit-product');
+    Route::put('/update-product/{slug}', [ProdukController::class, 'update'])->name('update-product');
     Route::delete('/destroy-produk/{id}/{slug}', [ProdukController::class, 'destroy'])->name('destroy-produk');
     Route::get('/add-image-product/{slug}', [ProdukController::class, 'addImageProduct'])->name('add-image-product');
     Route::post('/store-image-product', [ProdukController::class, 'storeImageProduct'])->name('store-image-product');
+    Route::put('/update-thumbnail-product/{slug}', [ProdukController::class, 'updateThumbnailProduct'])->name('update-thumbnail-product');
     Route::delete('/delete-image-product/{id}', [ProdukController::class, 'deleteImageProduct'])->name('delete-image-product');
 
     // Whatsapp Route

@@ -28,7 +28,7 @@ class ProdukController extends Controller
             return Datatables::of($query)
                 ->addColumn('action', function ($item) {
                     return '
-                        <a href="javascript:void(0)" class="btn btn-warning btn-block btn-sm">Ubah</a>
+                        <a href="/admin/edit-product/' . $item->slug . '" class="btn btn-warning btn-block btn-sm">Ubah</a>
                         <a href="javascript:void(0)" class="btn btn-danger btn-block btn-sm" data-slug="' . $item->slug . '" data-id="' . $item->id . '" data-produk="' . $item->nama_produk . '" id="deleteProduk">Hapus</a>
                         <a href="/admin/add-image-product/' . $item->slug . '" class="btn btn-info btn-block btn-sm">Tambah Foto Produk</a>
                     ';
@@ -183,6 +183,39 @@ class ProdukController extends Controller
         }
     }
 
+    public function updateThumbnailProduct(Request $request, $slug)
+    {
+        $product = Product::where('slug', $slug)->first();
+
+        unlink($product->thumbnail);
+
+        // Save picture
+        $picture = $request->file('gambar');
+
+        // FIle Name
+        $fileName = $slug . '.' . $picture->getClientOriginalExtension();
+
+        // File Location
+        $location = 'image/produk/' . $slug;
+
+        // File Name In Folder
+        $filePath = 'image/produk/' . $slug . '/' . $fileName;
+
+        if (!file_exists($location)) {
+            mkdir($location, 666, true);
+        }
+
+        // Image Intervention
+        $img = Img::make($picture->path());
+
+        // Resize image and save image
+        $img->resize(300, 200, function ($constraint) {
+            $constraint->aspectRatio();
+        })->save($filePath);
+
+        return redirect()->to('admin/produk')->with('message', 'Thumbnail Produk Berhasil Diubah');
+    }
+
     /**
      * Display the specified resource.
      *
@@ -200,9 +233,14 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($slug)
     {
-        //
+        $active = 'produk';
+        $template = Optional::where('title', 'Template Pemesanan')->first();
+        $whatsapps = Whatsapp::get();
+        $product = Product::where('slug', $slug)->firstorfail();
+
+        return view('admin.product.edit-product', compact('product', 'active', 'template', 'whatsapps'));
     }
 
     /**
@@ -212,9 +250,57 @@ class ProdukController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $slug)
     {
-        //
+        $checkProductName = Product::where('slug', $slug)->first();
+        $slug = $request->input('slug');
+
+        if ($request->input('nama_produk') != $checkProductName->nama_produk) {
+            $validateData = $request->validate([
+                'nama_produk' => 'required|unique:products,nama_produk',
+            ]);
+
+            $encodeProduk = urlencode($request->nama_produk);
+            $validateData['template_pemesanan'] = "Halo%20Admin%2C%20Saya%20Mau%20Order%20Nih%0ANama%20Pemesan%20%3A%C2%A0%0ANama%20Produk%20Yang%20Akan%20Dipesan%20%3A%C2%A0" . $encodeProduk . "Jumlah%20Produk%20Yang%20Dipesan%20%3A%C2%A0%C2%A0";
+        }
+
+        if (!empty($request->file('gambar'))) {
+            unlink($checkProductName->thumbnail);
+
+            // Save picture
+            $picture = $request->file('gambar');
+
+            // FIle Name
+            $fileName = $slug . '.' . $picture->getClientOriginalExtension();
+
+            // File Location
+            $location = 'image/produk/' . $slug;
+
+            // File Name In Folder
+            $filePath = 'image/produk/' . $slug . '/' . $fileName;
+
+            if (!file_exists($location)) {
+                mkdir($location, 666, true);
+            }
+
+            // Image Intervention
+            $img = Img::make($picture->path());
+
+            // Resize image and save image
+            $img->resize(300, 200, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($filePath);
+        }
+
+        $validateData = $request->validate([
+            'harga' => 'required',
+            'whatsapp_id' => 'required',
+            'deskripsi_produk' => 'required',
+        ]);
+
+        Product::where('slug', $slug)->update($validateData);
+
+        return redirect()->to('admin/produk')->with('message', 'Produk Berhasil Diubah');
     }
 
     /**
