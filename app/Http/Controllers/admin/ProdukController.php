@@ -77,7 +77,7 @@ class ProdukController extends Controller
 
         $encodeProduk = urlencode($request->nama_produk);
 
-        $validateData['template_pemesanan'] = "Halo%20Admin%2C%20Saya%20Mau%20Order%20Nih%0ANama%20Pemesan%20%3A%C2%A0%0ANama%20Produk%20Yang%20Akan%20Dipesan%20%3A%C2%A0" . $encodeProduk . "Jumlah%20Produk%20Yang%20Dipesan%20%3A%C2%A0%C2%A0";
+        $validateData['template_pemesanan'] = "Halo%20Admin%2C%20Saya%20Mau%20Order%20Nih%0ANama%20Pemesan%20%3A%C2%A0%0ANama%20Produk%20Yang%20Akan%20Dipesan%20%3A%C2%A0" . $encodeProduk . "%0AJumlah%20Produk%20Yang%20Dipesan%20%3A%C2%A0%C2%A0%0AUntuk%20harga%20produk%20tersebut%20berapa%20ya%3F";
 
         $validateData['harga'] = "Rp. " .  $request->input('harga');
         $validateData['slug'] = Str::slug($request->input('nama_produk'));

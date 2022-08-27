@@ -48,7 +48,6 @@
                             <th>No</th>
                             <th>Thumbnail Produk</th>
                             <th>Nama Produk</th>
-                            <th>Harga Produk</th>
                             <th>Aksi</th>
                           </tr>
                         </thead>
@@ -100,10 +99,6 @@
         {
             data: "nama_produk",
             name: "nama_produk",
-        },
-        {
-            data: "harga",
-            name: "harga",
         },
         {
             data: "action",

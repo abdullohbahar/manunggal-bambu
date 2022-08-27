@@ -5,6 +5,7 @@ use App\Http\Controllers\admin\ProdukController;
 use App\Http\Controllers\admin\WhatsappController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\landing\LandingController;
 use App\Http\Controllers\ProfileController;
 
 /*
@@ -18,6 +19,11 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+// Landing
+Route::get('/', [LandingController::class, 'index']);
+
+
+// Admin
 Route::get('/admin/login', [AuthController::class, 'index'])->name('login');
 
 Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth');
