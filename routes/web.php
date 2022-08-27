@@ -21,6 +21,8 @@ use App\Http\Controllers\ProfileController;
 
 // Landing
 Route::get('/', [LandingController::class, 'index']);
+Route::get('/detail/{slug}', [ProdukController::class, 'edit'])->name('detail');
+
 
 
 // Admin

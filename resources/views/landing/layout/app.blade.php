@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('./css/landing.css') }}">
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
+
+    {{-- Google FOnts --}}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
     <title>@yield('title')</title>
   </head>
   <body>
@@ -53,6 +61,39 @@
     </nav>
 
     @yield('content')
+
+    <footer>
+      <div class="container text-light">
+        <div class="row pt-5 pb-5">
+          <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
+            <h5><b>Kelompok Usaha Bersama</b></h5>
+            <p>Manunggal Bambu</p>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div class="row">
+              <div class="col-2">
+                <span class="fa fa-map-marker-alt footer-contacts-icon"> </span>
+              </div>
+              <div class="col-10">
+                <p>Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunung Kidul.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+            <div class="row">
+              <b>Media Sosial</b>
+            </div>
+            <div class="row">
+              <div class="social-links">
+                <a href="#">
+                  <i class="fab fa-instagram"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
