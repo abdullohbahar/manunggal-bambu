@@ -9,7 +9,7 @@
 
 @section('content')
 {{-- first section --}}
-  <section>
+  <section id="home">
     <div class="content-wrapper-1 section-bg">
       <div class="container">
         <div class="row">
@@ -31,10 +31,10 @@
   </section>
 
   {{-- Second section --}}
-  <section>
+  <section id="produk">
     <div class="content-wrapper-2">
       <div class="container">
-        <div class="row text-center">
+        <div class="row text-center pt-3">
           <div class="col-12 mt-5">
             <h1><b>Produk</b></h1>
             <p>
@@ -65,10 +65,10 @@
                   </div>
                   <div class="card-footer">
                     <div class="row">
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                      {{-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
                         <a href="{{ route('detail', $product->slug) }}" class="btn btn-outline-info btn-block rounded-pill">Detail Produk</a>
-                      </div>
-                      <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                      </div> --}}
+                      <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
                         <a href="https://wa.me/{{ $product->whatsapp_id . "?text=" . $product->template_pemesanan }}" target="_blank" class="btn btn-outline-success btn-block rounded-pill"><i class="fab fa-whatsapp"></i> Pesan</a>
                       </div>
                     </div>
@@ -79,7 +79,7 @@
         </div>
         <div class="row justify-content-center pb-5">
           <div class="col-12 text-center">
-            <a href="" class="btn rounded-pill btn-primary">Lihat Produk Lainnya</a>
+            <a href="{{ route('product') }}" class="btn rounded-pill btn-primary">Lihat Produk Lainnya</a>
           </div>
         </div>
       </div>
@@ -104,7 +104,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="struktur-organisasi">
     <div class="content-wrapper-2">
       <div class="container">
         <div class="row justify-content-center pt-5 pb-5">

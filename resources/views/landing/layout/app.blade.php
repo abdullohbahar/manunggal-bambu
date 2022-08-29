@@ -43,17 +43,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="navbar-nav ml-auto">
+            <?php 
+              $lastSegment = request()->segment(count(request()->segments()));
+            ?>
             <li class="nav-item mt-2">
-                <a class="nav-link" href="#home"><b>Home</b></a>
+                <a class="nav-link" href="{{ $lastSegment == "product" ? route('/') : "#home" }}"><b>Home </b></a>
             </li>
             <li class="nav-item mt-2">
-                <a class="nav-link" href="#features"><b>Sejarah</b></a>
+                <a class="nav-link" href="{{ $lastSegment == "product" ? '/#home' : "#home" }}"><b>Sejarah</b></a>
             </li>
             <li class="nav-item mt-2">
-                <a class="nav-link" href="#product"><b>Produk</b></a>
+                <a class="nav-link" href="{{ route('product') }}"><b>Produk</b></a>
             </li>
             <li class="nav-item mt-2">
-                <a class="nav-link" href="#product"><b>Struktur Organisasi</b></a>
+                <a class="nav-link" href="{{ $lastSegment == "product" ? '/#struktur-organisasi' : "#struktur-organisasi" }}"><b>Struktur Organisasi</b></a>
             </li>
           </ul>
         </div>
@@ -107,5 +110,17 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
     -->
+
+    <script>
+      //add smooth scrolling when clicking any anchor link
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function (e) {
+              e.preventDefault();
+              document.querySelector(this.getAttribute('href')).scrollIntoView({
+                  behavior: 'smooth'
+              });
+          });
+      });
+    </script>
   </body>
 </html>

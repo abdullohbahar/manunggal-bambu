@@ -21,8 +21,9 @@ use App\Http\Controllers\ProfileController;
 */
 
 // Landing
-Route::get('/', [LandingController::class, 'index']);
-Route::get('/detail/{slug}', [ProdukController::class, 'edit'])->name('detail');
+Route::get('/', [LandingController::class, 'index'])->name('/');
+// Route::get('/detail/{slug}', [ProdukController::class, 'edit'])->name('detail');
+Route::get('/product', [LandingController::class, 'publicProduct'])->name('product');
 
 
 

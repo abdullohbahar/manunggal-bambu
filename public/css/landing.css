@@ -1,5 +1,6 @@
 body {
     font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
 }
 
 .content-wrapper-1 {
@@ -7,6 +8,14 @@ body {
     height: 880px;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.content-wrapper-product {
+    margin-top: 63px;
+    height: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: #b1d7b4 !important;
 }
 
 .section-bg {
