@@ -68,9 +68,9 @@
                                             <option value="">-- Pilih Nomor Whatsapp --</option>
                                             @foreach ($whatsapps as $whatsapp)
                                                 @if (old('whatsapp_id', $product->whatsapp_id) == $whatsapp->no_whatsapp)
-                                                    <option value="{{ $whatsapp->no_whatsapp }}" selected> {{ $whatsapp->no_whatsapp }}</option>
+                                                    <option value="{{ $whatsapp->no_whatsapp }}" selected>{{ $whatsapp->nama_pemilik_whatsapp }} | {{ $whatsapp->no_whatsapp }}</option>
                                                 @else
-                                                    <option value="{{ $whatsapp->no_whatsapp }}"> {{ $whatsapp->no_whatsapp }}</option>
+                                                    <option value="{{ $whatsapp->no_whatsapp }}">{{ $whatsapp->nama_pemilik_whatsapp }} | {{ $whatsapp->no_whatsapp }}</option>
                                                 @endif
                                             @endforeach
                                         </select>
