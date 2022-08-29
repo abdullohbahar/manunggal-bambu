@@ -21,8 +21,8 @@
   </head>
   <body>
     <nav
-      class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar"
-      style="background-color: #B1D7B4 !important"
+      class="navbar navbar-dark navbar-expand-lg fixed-top bg-dark clean-navbar"
+      style="background-color: #42855B !important"
     >
       <div class="container">
         <a class="navbar-brand logo" href="#">

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\DashboardController;
+use App\Http\Controllers\admin\OptionalController;
 use App\Http\Controllers\admin\ProdukController;
 use App\Http\Controllers\admin\WhatsappController;
 use Illuminate\Support\Facades\Route;
@@ -59,4 +60,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     // Profile Route
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
     Route::put('/update-profile/{id}', [ProfileController::class, 'update'])->name('update-profile');
+
+    // Optionals Route
+    Route::get('/history', [OptionalController::class, 'history'])->name('history');
 });
