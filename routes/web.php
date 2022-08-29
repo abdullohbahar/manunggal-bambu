@@ -22,7 +22,7 @@ use App\Http\Controllers\ProfileController;
 
 // Landing
 Route::get('/', [LandingController::class, 'index'])->name('/');
-// Route::get('/detail/{slug}', [ProdukController::class, 'edit'])->name('detail');
+Route::get('/detail/{slug}', [LandingController::class, 'publicDetailProduct'])->name('detail');
 Route::get('/product', [LandingController::class, 'publicProduct'])->name('product');
 
 

@@ -17,6 +17,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
 
+    @stack('addons-css')
+
     <title>@yield('title')</title>
   </head>
   <body>
@@ -45,18 +47,19 @@
           <ul class="navbar-nav ml-auto">
             <?php 
               $lastSegment = request()->segment(count(request()->segments()));
+              $secondSegment = Request::segment(1)
             ?>
             <li class="nav-item mt-2">
-                <a class="nav-link" href="{{ $lastSegment == "product" ? route('/') : "#home" }}"><b>Home </b></a>
+                <a class="nav-link" href="{{ $lastSegment == "product" || $secondSegment == "detail" ? route('/') : "#home" }}"><b>Home </b></a>
             </li>
             <li class="nav-item mt-2">
-                <a class="nav-link" href="{{ $lastSegment == "product" ? '/#home' : "#home" }}"><b>Sejarah</b></a>
+                <a class="nav-link" href="{{ $lastSegment == "product" || $secondSegment == "detail" ? '/#home' : "#home" }}"><b>Sejarah</b></a>
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link" href="{{ route('product') }}"><b>Produk</b></a>
             </li>
             <li class="nav-item mt-2">
-                <a class="nav-link" href="{{ $lastSegment == "product" ? '/#struktur-organisasi' : "#struktur-organisasi" }}"><b>Struktur Organisasi</b></a>
+                <a class="nav-link" href="{{ $lastSegment == "product" || $secondSegment == "detail" ? '/#struktur-organisasi' : "#struktur-organisasi" }}"><b>Struktur Organisasi</b></a>
             </li>
           </ul>
         </div>
@@ -122,5 +125,8 @@
           });
       });
     </script>
+
+    @stack('addons-js')
+
   </body>
 </html>

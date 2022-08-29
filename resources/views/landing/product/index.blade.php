@@ -49,10 +49,10 @@
                             </div>
                             <div class="card-footer">
                                 <div class="row">
-                                {{-- <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
                                     <a href="{{ route('detail', $product->slug) }}" class="btn btn-outline-info btn-block rounded-pill">Detail Produk</a>
-                                </div> --}}
-                                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mb-3">
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
                                     <a href="https://wa.me/{{ $product->whatsapp_id . "?text=" . $product->template_pemesanan }}" target="_blank" class="btn btn-outline-success btn-block rounded-pill"><i class="fab fa-whatsapp"></i> Pesan</a>
                                 </div>
                                 </div>
