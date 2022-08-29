@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\landing;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -14,7 +15,8 @@ class LandingController extends Controller
      */
     public function index()
     {
-        return view('landing.landing');
+        $products = Product::all()->take(6);
+        return view('landing.landing', compact('products'));
     }
 
     /**

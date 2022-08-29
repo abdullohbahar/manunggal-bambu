@@ -101,7 +101,7 @@ class ProdukController extends Controller
         // Image Intervention
         $img = Img::make($picture->path());
 
-        // Resize image and save image
+        // // Resize image and save image
         $img->resize(300, 200, function ($constraint) {
             $constraint->aspectRatio();
         })->save($filePath);
