@@ -102,7 +102,7 @@ class ProdukController extends Controller
         $img = Img::make($picture->path());
 
         // // Resize image and save image
-        $img->resize(300, 200, function ($constraint) {
+        $img->resize(1280, 720, function ($constraint) {
             $constraint->aspectRatio();
         })->save($filePath);
 
@@ -146,7 +146,7 @@ class ProdukController extends Controller
         $img = Img::make($picture->path());
 
         // Resize image and save image
-        $img->resize(300, 200, function ($constraint) {
+        $img->resize(1280, 720, function ($constraint) {
             $constraint->aspectRatio();
         })->save($filePath);
 
@@ -209,7 +209,7 @@ class ProdukController extends Controller
         $img = Img::make($picture->path());
 
         // Resize image and save image
-        $img->resize(300, 200, function ($constraint) {
+        $img->resize(1280, 720, function ($constraint) {
             $constraint->aspectRatio();
         })->save($filePath);
 
@@ -287,7 +287,7 @@ class ProdukController extends Controller
             $img = Img::make($picture->path());
 
             // Resize image and save image
-            $img->resize(300, 200, function ($constraint) {
+            $img->resize(1280, 720, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($filePath);
         }
