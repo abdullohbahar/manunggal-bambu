@@ -87,7 +87,7 @@
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
-                                    <img class="img-preview img-fluid" alt="">
+                                    <img class="img-preview img-fluid w-50" alt="">
                                 </div>
                             </div>
                             <div class="row">
