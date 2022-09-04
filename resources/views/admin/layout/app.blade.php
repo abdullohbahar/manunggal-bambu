@@ -111,14 +111,14 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </p>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a href="{{ route('history') }}" class="nav-link {{ $active == 'history' ? 'active' : '' }}">
                     <i class="nav-icon fas fa-layer-group"></i> 
                     <p>
                     Sejarah
                     </p>
                 </a>
-            </li>
+            </li> --}}
         </ul>
       </nav>
     </div>

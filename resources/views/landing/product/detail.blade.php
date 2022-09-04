@@ -55,9 +55,11 @@
                     @foreach ($randProduct as $product)
                         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-5">
                             <div class="card" style="max-height: 550px  ;">
+                                <center>
                                 <div style="width: 348px; height: 350px; position: relative;">
                                     <img src="{{ asset($product->thumbnail) }}" class="card-img-top image-product w-100" alt="{{ $product->nama_produk }}">
                                 </div>
+                                </center>
                                 <div class="card-body" style="background-color: #F7F7F7">
                                     <h5 class="card-title text-center">
                                     <b>

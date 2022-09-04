@@ -4,14 +4,14 @@ body {
 }
 
 .content-wrapper-1 {
-    margin-top: 63px;
+    margin-top: 55px;
     height: 880px;
     background-repeat: no-repeat;
     background-size: cover;
 }
 
 .content-wrapper-product {
-    margin-top: 63px;
+    margin-top: 55px;
     height: auto;
     background-repeat: no-repeat;
     background-size: cover;
@@ -53,8 +53,6 @@ body {
     left: 0;
     right: 0;
     margin: auto;
-    padding-left: 5px;
-    padding-right: 5px;
 }
 
 .fa.footer-contacts-icon {
@@ -82,6 +80,10 @@ body {
     line-height: 35px;
     margin-right: 5px;
     margin-bottom: 5px;
+}
+
+.under {
+    display: inline-block;
 }
 
 footer {

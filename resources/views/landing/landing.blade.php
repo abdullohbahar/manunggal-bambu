@@ -50,18 +50,17 @@
           @foreach ($products as $product)
               <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-5">
                 <div class="card" style="max-height: 550px;">
-                  <div style="width: 348px; height: 350px; position: relative;">
-                    <img src="{{ asset($product->thumbnail) }}" class="card-img-top image-product w-100" alt="{{ $product->nama_produk }}">
-                  </div>
+                  <center>
+                    <div style="width: 348px; height: 350px; position: relative;">
+                      <img src="{{ asset($product->thumbnail) }}" class="card-img-top image-product w-100" alt="{{ $product->nama_produk }}">
+                    </div>
+                  </center>
                   <div class="card-body" style="background-color: #F7F7F7">
-                    <h5 class="card-title">
+                    <h5 class="card-title text-center">
                       <b>
                         {{ $product->nama_produk }}
                       </b>
                     </h5>
-                    <p class="card-text">
-                      {!! Str::limit($product->deskripsi_produk, 30, '...') !!}
-                    </p>
                   </div>
                   <div class="card-footer">
                     <div class="row">
@@ -110,6 +109,11 @@
         <div class="row justify-content-center pt-5 pb-5">
           <div class="col-12 text-center">
             <h3><b>Struktur Organisasi</b></h3>
+          </div>
+        </div>
+        <div class="row text-center">
+          <div class="col-12 mb-5">
+            <img src="{{ asset('./dist/img/struktur-organisasi.svg') }}" class="img-fluid w-75" alt="" srcset="">
           </div>
         </div>
       </div>

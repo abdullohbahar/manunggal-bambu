@@ -46,9 +46,9 @@
                         <thead>
                           <tr>
                             <th>No</th>
-                            <th>Thumbnail Produk</th>
+                            <th style="width: 25%">Thumbnail Produk</th>
                             <th>Nama Produk</th>
-                            <th>Aksi</th>
+                            <th style="width: 20%">Aksi</th>
                           </tr>
                         </thead>
                         <tbody>

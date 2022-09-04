@@ -13,13 +13,19 @@ $("body").on("click", "#deleteProduk", function () {
         confirmButtonText: "Hapus",
     }).then((result) => {
         if (result.isConfirmed) {
+            Swal.fire({
+                title: "Data Sedang Dihapus",
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            });
             $.ajax({
                 url: "/admin/destroy-produk/" + id + "/" + slug,
                 dataType: "json",
                 type: "DELETE",
                 success: function (response) {
-                    console.log(response);
                     if (response.status == 200) {
+                        Swal.close();
                         redirectLocation = "/admin/produk";
 
                         success(response.message, redirectLocation);
@@ -95,12 +101,19 @@ $("body").on("click", "#deleteImageProduk", function () {
         confirmButtonText: "Hapus",
     }).then((result) => {
         if (result.isConfirmed) {
+            Swal.fire({
+                title: "Data Sedang Dihapus",
+                didOpen: () => {
+                    Swal.showLoading();
+                },
+            });
             $.ajax({
                 url: "/admin/delete-image-product/" + id,
                 dataType: "json",
                 type: "DELETE",
                 success: function (response) {
                     if (response.status == 200) {
+                        Swal.close();
                         redirectLocation = "/admin/add-image-product/" + slug;
 
                         success(response.message, redirectLocation);

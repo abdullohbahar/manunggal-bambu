@@ -34,29 +34,28 @@
                     @foreach ($products as $product)
                         <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4 mb-5">
                             <div class="card" style="max-height: 550px;">
-                            <div style="width: 348px; height: 350px; position: relative;">
-                                <img src="{{ asset($product->thumbnail) }}" class="card-img-top image-product w-100" alt="{{ $product->nama_produk }}">
-                            </div>
-                            <div class="card-body" style="background-color: #F7F7F7">
-                                <h5 class="card-title">
-                                <b>
-                                    {{ $product->nama_produk }}
-                                </b>
-                                </h5>
-                                <p class="card-text">
-                                {!! Str::limit($product->deskripsi_produk, 30, '...') !!}
-                                </p>
-                            </div>
-                            <div class="card-footer">
-                                <div class="row">
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
-                                    <a href="{{ route('detail', $product->slug) }}" class="btn btn-outline-info btn-block rounded-pill">Detail Produk</a>
+                                <center>
+                                    <div style="width: 340px; height: 350px; position: relative;">
+                                        <img src="{{ asset($product->thumbnail) }}" class="card-img-top image-product w-100" alt="{{ $product->nama_produk }}">
+                                    </div>
+                                </center>
+                                <div class="card-body" style="background-color: #F7F7F7">
+                                    <h5 class="card-title text-center">
+                                        <b>
+                                            {{ $product->nama_produk }}
+                                        </b>
+                                    </h5>
                                 </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
-                                    <a href="https://wa.me/{{ $product->whatsapp_id . "?text=" . $product->template_pemesanan }}" target="_blank" class="btn btn-outline-success btn-block rounded-pill"><i class="fab fa-whatsapp"></i> Pesan</a>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                            <a href="{{ route('detail', $product->slug) }}" class="btn btn-outline-info btn-block rounded-pill">Detail Produk</a>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3">
+                                            <a href="https://wa.me/{{ $product->whatsapp_id . "?text=" . $product->template_pemesanan }}" target="_blank" class="btn btn-outline-success btn-block rounded-pill"><i class="fab fa-whatsapp"></i> Pesan</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                </div>
-                            </div>
                             </div>
                         </div>
                     @endforeach

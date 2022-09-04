@@ -28,7 +28,7 @@
     >
       <div class="container">
         <a class="navbar-brand logo" href="#">
-          <b>KUB Manunggal Bambu</b>
+          <b> Karya Manunggal Bambu </span></b>
         {{-- <img
           class="img-fluid"
           src="{{ asset('./assets/img/Logo Biru.png') }}"
@@ -73,7 +73,7 @@
         <div class="row pt-5 pb-5">
           <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 text-center">
             <h5><b>Kelompok Usaha Bersama</b></h5>
-            <p>Manunggal Bambu</p>
+            <p>Karya Manunggal Bambu</p>
           </div>
           <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
             <div class="row">
@@ -85,7 +85,7 @@
               </div>
             </div>
           </div>
-          <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
+          {{-- <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4">
             <div class="row">
               <b>Media Sosial</b>
             </div>
@@ -96,7 +96,7 @@
                 </a>
               </div>
             </div>
-          </div>
+          </div> --}}
         </div>
       </div>
     </footer>
