@@ -36,7 +36,7 @@
                       <div class="row">
                         <div class="col-12">
                           <h3>Thumbnail Produk</h3>
-                          <img class="img-fluid d-block img-preview" src="{{ asset($product->thumbnail) }}" alt="" srcset="">
+                          <img class="img-fluid d-block img-preview w-25" src="{{ asset($product->thumbnail) }}" alt="" srcset="">
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
                           <form action="{{ route('update-thumbnail-product',$product->slug) }}" method="POST" enctype="multipart/form-data">

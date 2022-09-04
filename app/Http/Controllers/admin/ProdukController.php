@@ -34,7 +34,7 @@ class ProdukController extends Controller
                     ';
                 })
                 ->addColumn('gambar', function ($item) {
-                    return '<img class="img-fluid mx-auto d-block img-preview" src="/' . $item->thumbnail . '" alt="" srcset="">
+                    return '<img class="img-fluid mx-auto d-block img-preview w-50" src="/' . $item->thumbnail . '" alt="" srcset="">
                     ';
                 })
                 ->rawColumns(['action', 'gambar'])
@@ -89,10 +89,10 @@ class ProdukController extends Controller
         $fileName = $validateData['slug'] . '.' . $picture->getClientOriginalExtension();
 
         // File Location
-        $location = 'image/produk/' . $validateData['slug'];
+        $location = 'image/produk/';
 
         // File Name In Folder
-        $filePath = 'image/produk/' . $validateData['slug'] . '/' . $fileName;
+        $filePath = 'image/produk/' . $fileName;
 
         if (!file_exists($location)) {
             mkdir($location, 666, true);
@@ -133,10 +133,10 @@ class ProdukController extends Controller
         $fileName = $slug . time() . '.' . $picture->getClientOriginalExtension();
 
         // File Location
-        $location = 'image/produk/' . $slug;
+        $location = 'image/produk/';
 
         // File Name In Folder
-        $filePath = 'image/produk/' . $slug . '/' . $fileName;
+        $filePath = 'image/produk/' . $fileName;
 
         if (!file_exists($location)) {
             mkdir($location, 666, true);
@@ -196,10 +196,10 @@ class ProdukController extends Controller
         $fileName = $slug . '.' . $picture->getClientOriginalExtension();
 
         // File Location
-        $location = 'image/produk/' . $slug;
+        $location = 'image/produk/';
 
         // File Name In Folder
-        $filePath = 'image/produk/' . $slug . '/' . $fileName;
+        $filePath = 'image/produk/' . $fileName;
 
         if (!file_exists($location)) {
             mkdir($location, 666, true);
@@ -212,6 +212,8 @@ class ProdukController extends Controller
         $img->resize(1280, 720, function ($constraint) {
             $constraint->aspectRatio();
         })->save($filePath);
+
+        Product::where('slug', $slug)->update(['thumbnail' => $filePath]);
 
         return redirect()->to('admin/produk')->with('message', 'Thumbnail Produk Berhasil Diubah');
     }
@@ -255,6 +257,12 @@ class ProdukController extends Controller
         $checkProductName = Product::where('slug', $slug)->first();
         $slug = $request->input('slug');
 
+        $validateData = $request->validate([
+            'harga' => 'required',
+            'whatsapp_id' => 'required',
+            'deskripsi_produk' => 'required',
+        ]);
+
         if ($request->input('nama_produk') != $checkProductName->nama_produk) {
             $validateData = $request->validate([
                 'nama_produk' => 'required|unique:products,nama_produk',
@@ -274,10 +282,10 @@ class ProdukController extends Controller
             $fileName = $slug . '.' . $picture->getClientOriginalExtension();
 
             // File Location
-            $location = 'image/produk/' . $slug;
+            $location = 'image/produk/';
 
             // File Name In Folder
-            $filePath = 'image/produk/' . $slug . '/' . $fileName;
+            $filePath = 'image/produk/' . $fileName;
 
             if (!file_exists($location)) {
                 mkdir($location, 666, true);
@@ -290,13 +298,9 @@ class ProdukController extends Controller
             $img->resize(1280, 720, function ($constraint) {
                 $constraint->aspectRatio();
             })->save($filePath);
-        }
 
-        $validateData = $request->validate([
-            'harga' => 'required',
-            'whatsapp_id' => 'required',
-            'deskripsi_produk' => 'required',
-        ]);
+            $validateData['thumbnail'] = $filePath;
+        }
 
         Product::where('slug', $slug)->update($validateData);
 
