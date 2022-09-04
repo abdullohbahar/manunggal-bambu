@@ -13,9 +13,11 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
 
     {{-- Google FOnts --}}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    {{-- <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> --}}
+
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/open-sauce-one" type="text/css"/>
 
     @stack('addons-css')
 
@@ -27,7 +29,7 @@
       style="background-color: #42855B !important"
     >
       <div class="container">
-        <a class="navbar-brand logo" href="#">
+        <a class="navbar-brand logo" href="/">
           <b> Karya Manunggal Bambu </span></b>
         {{-- <img
           class="img-fluid"
@@ -81,7 +83,9 @@
                 <span class="fa fa-map-marker-alt footer-contacts-icon"> </span>
               </div>
               <div class="col-10">
-                <p>Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunung Kidul.</p>
+                <a target="_blank" href="https://www.google.com/maps/place/Mas+klendor/@-7.8843904,110.7404474,17z/data=!3m1!4b1!4m5!3m4!1s0x2e7a35e3b059de5f:0xfc1eb69f080cba35!8m2!3d-7.8843983!4d110.7426508?hl=id" class="text-decoration-none text-white">
+                  <p>Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunung Kidul.</p>
+                </a>
               </div>
             </div>
           </div>
