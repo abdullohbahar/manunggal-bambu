@@ -123,3 +123,13 @@ $("body").on("click", "#deleteImageProduk", function () {
         }
     });
 });
+
+// Loading On submit
+$("body").on("submit", "#submitForm", function () {
+    Swal.fire({
+        title: "Data Sedang Diproses",
+        didOpen: () => {
+            Swal.showLoading();
+        },
+    });
+});

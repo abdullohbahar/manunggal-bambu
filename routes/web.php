@@ -29,6 +29,7 @@ Route::get('/product', [LandingController::class, 'publicProduct'])->name('produ
 
 // Admin
 Route::get('/admin/login', [AuthController::class, 'index'])->name('login');
+Route::get('/admin', [AuthController::class, 'index'])->name('admin');
 
 Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth');
 Route::post('/auth', [AuthController::class, 'authenticate'])->name('auth');

@@ -33,7 +33,7 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('update-product', $product->slug) }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('update-product', $product->slug) }}" id="submitForm" method="POST" enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="row">

@@ -39,7 +39,7 @@
                           <img class="img-fluid d-block img-preview w-25" src="{{ asset($product->thumbnail) }}" alt="" srcset="">
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                          <form action="{{ route('update-thumbnail-product',$product->slug) }}" method="POST" enctype="multipart/form-data">
+                          <form action="{{ route('update-thumbnail-product',$product->slug) }}" id="submitForm" method="POST" enctype="multipart/form-data">
                             @method('put')
                             @csrf
                             <div class="form-group">
@@ -66,7 +66,7 @@
                           <h3>Foto Produk</h3>
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6">
-                          <form action="{{ route('store-image-product') }}" method="POST" enctype="multipart/form-data">
+                          <form action="{{ route('store-image-product') }}" id="submitForm" method="POST" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="slug" value="{{ $slug }}" id="">
                             <div class="form-group">
