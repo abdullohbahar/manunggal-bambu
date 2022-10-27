@@ -1,7 +1,7 @@
 @extends('landing.layout.app')
 
 @section('title')
-  Kelompok Usaha Bersama Manunggal Bambu
+  Kerajinan Bambu Gunung Kidul Yogyakarta
 @endsection
 
 @push('addons-css')
@@ -16,14 +16,30 @@
           <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 content text-light">
             <h1>
               <b>
-                KUB Manunggal Bambu
+                Kerajinan Bambu Gunungkidul Yogyakarta
               </b>
             </h1>
             <p>
+              Kami Menyediakan Kerajinan Bambu. Anda Juga Bisa Melakukan Request Untuk Dibuatkan Suatu Kerajinan Dari Bambu.
+              Lokasi Kami Terletak di Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunung Kidul.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="sejarah">
+    <div class="content-wrapper-3">
+      <div class="container">
+        <div class="row justify-content-center pt-5 pb-5">
+          <div class="col-12 text-center text-light">
+            <h3><b>KUB Manunggal Bambu</b></h3>
+            <h5>
               Adalah Kelompok Usaha Bersama yang menciptakan kerajinan dari bambu. 
               Produk dari Kelompok Usaha Bersama tersebut kebanyakan berupa mainan bambu yang bernilai rendah.
               Usaha Mikro Kecil Menengah (UMKM) kerajinan bambu tersebut terletak di Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunung Kidul.
-            </p>
+            </h5>
           </div>
         </div>
       </div>
@@ -50,7 +66,7 @@
           @foreach ($products as $product)
               <div class="col-sm-4 col-md-4 col-lg-3 col-xl-3 mb-3">
                 <div class="card">
-                  <img src="{{ asset($product->thumbnail) }}" class="card-img-top" alt="...">
+                  <img src="{{ asset($product->thumbnail) }}" class="card-img-top" alt="{{ $product->nama_produk }}">
                   <div class="card-body">
                     <p class="card-text">
                       <h4 class="text-center">
@@ -93,7 +109,7 @@
             <h5>Anda Bisa Request Untuk Dibuatkan Suatu Produk</h5>
             <h5>Hubungi Admin Untuk Informasi Lebih Lanjut</h5>
             <p>
-              <a href="" class="btn btn-info"><i class="fab fa-whatsapp"></i> Request Produk</a>
+              <a href="https://wa.me/6285876232199?text=Halo%20kak%2C%20Saya%20mau%20request%20kerajinan%20bambu" class="btn btn-info"><i class="fab fa-whatsapp"></i> Request Produk</a>
             </p>
           </div>
         </div>
