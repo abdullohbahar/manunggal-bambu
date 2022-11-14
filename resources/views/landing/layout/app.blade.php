@@ -18,6 +18,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet"> --}}
 
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/open-sauce-one" type="text/css"/>
+    <meta name="google-site-verification" content="-RhVV1IO1AaFEP3re5c9kauZV4n8TYjKPGI59_yhVpQ" />
+    <meta name="google-site-verification" content="LUWmFovgzu5u3Odn8J0vGr6mU2ub6OXACarDT35-pyQ" />
+    <meta name="description" content="Kerajinan Bambu Yogyakarta | Kerajinan Bambu Gunungkidul | Kerajinan Bambu | Beli Kerajinan Bambu | Jual Kerajinan Bambu | Mainan Bambu | Mainan Tradisional Dari Bambu">
 
     @stack('addons-css')
 
@@ -55,7 +58,7 @@
                 <a class="nav-link" href="{{ $lastSegment == "product" || $secondSegment == "detail" ? route('/') : "#home" }}"><b>Home </b></a>
             </li>
             <li class="nav-item mt-2">
-                <a class="nav-link" href="{{ $lastSegment == "product" || $secondSegment == "detail" ? '/#home' : "#home" }}"><b>Sejarah</b></a>
+                <a class="nav-link" href="{{ $lastSegment == "product" || $secondSegment == "detail" ? '/#sejarah' : "#sejarah" }}"><b>Sejarah</b></a>
             </li>
             <li class="nav-item mt-2">
                 <a class="nav-link" href="{{ route('product') }}"><b>Produk</b></a>
@@ -117,6 +120,17 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
     -->
+
+    
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7FVJEBZWCJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-7FVJEBZWCJ');
+</script>
 
     <script>
       //add smooth scrolling when clicking any anchor link
