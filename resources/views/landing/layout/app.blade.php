@@ -20,7 +20,8 @@
     <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/open-sauce-one" type="text/css"/>
     <meta name="google-site-verification" content="-RhVV1IO1AaFEP3re5c9kauZV4n8TYjKPGI59_yhVpQ" />
     <meta name="google-site-verification" content="LUWmFovgzu5u3Odn8J0vGr6mU2ub6OXACarDT35-pyQ" />
-    <meta name="description" content="Kerajinan Bambu Yogyakarta | Kerajinan Bambu Gunungkidul | Kerajinan Bambu | Beli Kerajinan Bambu | Jual Kerajinan Bambu | Mainan Bambu | Mainan Tradisional Dari Bambu">
+
+    <meta name="description" content="{{ $metaContent }}">
 
     @stack('addons-css')
 

@@ -90,6 +90,12 @@ footer {
     background-color: #292c2f;
 }
 
+.sejarah-part {
+    text-indent: 50px;
+    letter-spacing: 1px;
+    line-height: 20.5px;
+}
+
 /* // Extra small devices (portrait phones, less than 576px) */
 /* // No media query for `xs` since this is the default in Bootstrap */
 

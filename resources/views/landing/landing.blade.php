@@ -33,13 +33,15 @@
     <div class="content-wrapper-3">
       <div class="container">
         <div class="row justify-content-center pt-5 pb-5">
-          <div class="col-12 text-center text-light">
+          <div class="col-12 text-center">
             <h3><b>KUB Manunggal Bambu</b></h3>
-            <h5>
-              Adalah Kelompok Usaha Bersama yang menciptakan kerajinan dari bambu. 
-              Produk dari Kelompok Usaha Bersama tersebut kebanyakan berupa mainan bambu yang bernilai rendah.
-              Usaha Mikro Kecil Menengah (UMKM) kerajinan bambu tersebut terletak di Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunung Kidul.
-            </h5>
+            <h6 class="text-justify sejarah-part">
+              KUB "Karya Manunggal Bambu" adalah kelompok usaha bersama yang menciptakan kerajinan dari bambu yang terletak di Dusun Mandesan, Desa Semin, Kabupaten Gunung Kidul. 
+              Terbentuknya KUB "Karya Manunggal Bambu" diawali dari terdapatnya salah satu potensi yang dimiliki didesa tersebut yaitu pohon bambu. 
+              Salah satu potensi ini dimanfaatkan warga untuk membuat kerajinan dari bambu,yang mana hal tersebut menjadi salah satu mata pencaharian terbesar khususnya di Dusun Mandesan,Desa Semin. 
+              Disamping itu sebagian besar mata pencaharian penduduk nya saat ini adalah sebagai pengrajin bambu/buruh dari kerajinan bambu. 
+              Oleh karena itu untuk mengelola UMKM kerajinan bambu tersebut,maka pihak pemerintah desa membentuk kelompok usaha bersama yang disebut "Karya Manunggal Bambu".
+            </h6>
           </div>
         </div>
       </div>
@@ -104,7 +106,7 @@
     <div class="content-wrapper-3">
       <div class="container">
         <div class="row justify-content-center pt-5 pb-5">
-          <div class="col-12 text-center text-light">
+          <div class="col-12 text-center">
             <h3><b>Anda Tidak Menemukan Produk Yang Anda Cari?</b></h3>
             <h5>Anda Bisa Request Untuk Dibuatkan Suatu Produk</h5>
             <h5>Hubungi Admin Untuk Informasi Lebih Lanjut</h5>
