@@ -7,7 +7,7 @@
 @push('addons-css')
 <style>
     .selectedImage{
-        background-color: red !important;
+        background-color: #00a1ff !important;
     }
 </style>
 @endpush

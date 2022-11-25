@@ -67,8 +67,8 @@
         <div class="row mt-5 justify-content-center">
           @foreach ($products as $product)
               <div class="col-sm-4 col-md-4 col-lg-3 col-xl-3 mb-3">
-                <div class="card">
-                  <img src="{{ asset($product->thumbnail) }}" class="card-img-top" alt="{{ $product->nama_produk }}">
+                <div class="card" style="height: 573px">
+                  <img src="{{ asset($product->thumbnail) }}" class="card-img-top" alt="{{ $product->nama_produk }}" style="height: 337px">
                   <div class="card-body">
                     <p class="card-text">
                       <h4 class="text-center">
