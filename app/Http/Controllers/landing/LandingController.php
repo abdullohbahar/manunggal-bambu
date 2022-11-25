@@ -17,7 +17,7 @@ class LandingController extends Controller
     public function index()
     {
         $products = Product::all()->take(6);
-        $metaContent = "Kerajinan Bambu Yogyakarta | Kerajinan Bambu Gunungkidul | Kerajinan Bambu | Beli Kerajinan Bambu | Jual Kerajinan Bambu | Mainan Bambu | Mainan Tradisional Dari Bambu";
+        $metaContent = "Kerajinan Bambu Yogyakarta | Kerajinan Bambu Gunungkidul | Kerajinan Bambu | Jual Kerajinan Bambu | Mainan Bambu | Mainan Tradisional Dari Bambu";
         return view('landing.landing', compact('products', 'metaContent'));
     }
 
@@ -25,7 +25,7 @@ class LandingController extends Controller
     {
         $active = "product";
         $products = Product::paginate(9);
-        $metaContent = "Kerajinan Bambu Yogyakarta | Kerajinan Bambu Gunungkidul | Kerajinan Bambu | Beli Kerajinan Bambu | Jual Kerajinan Bambu | Mainan Bambu | Mainan Tradisional Dari Bambu";
+        $metaContent = "Kerajinan Bambu Yogyakarta | Kerajinan Bambu Gunungkidul | Kerajinan Bambu | Jual Kerajinan Bambu | Mainan Bambu | Mainan Tradisional Dari Bambu";
 
 
         return view('landing.product.index', compact('active', 'products', 'metaContent'));
@@ -36,7 +36,7 @@ class LandingController extends Controller
         $product = Product::where('slug', $slug)->firstOrFail();
         $images = Image::where('product_slug', $slug)->get();
         $randProduct = Product::inRandomOrder()->limit(6)->get();
-        $metaContent = $product->nama_produk . "| Kerajinan Bambu | Beli Kerajinan Bambu | Jual Kerajinan Bambu | Mainan Bambu | Mainan Tradisional Dari Bambu";
+        $metaContent = $product->nama_produk . " | " . $product->nama_produk . " Bambu | Kerajinan Bambu | Jual Kerajinan Bambu | Mainan Bambu | Mainan Tradisional Dari Bambu";
 
         return view('landing.product.detail', compact('product', 'images', 'randProduct', 'metaContent'));
     }

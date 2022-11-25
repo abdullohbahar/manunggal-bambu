@@ -88,7 +88,7 @@
               </div>
               <div class="col-10">
                 <a target="_blank" href="https://www.google.com/maps/place/Mas+klendor/@-7.8843904,110.7404474,17z/data=!3m1!4b1!4m5!3m4!1s0x2e7a35e3b059de5f:0xfc1eb69f080cba35!8m2!3d-7.8843983!4d110.7426508?hl=id" class="text-decoration-none text-white">
-                  <p>Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunung Kidul.</p>
+                  <p>Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunungkidul.</p>
                 </a>
               </div>
             </div>

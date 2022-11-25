@@ -1,7 +1,7 @@
 @extends('landing.layout.app')
 
 @section('title')
-  Kerajinan Bambu Gunung Kidul Yogyakarta
+  Kerajinan Bambu Gunungkidul Yogyakarta
 @endsection
 
 @push('addons-css')
@@ -21,7 +21,7 @@
             </h1>
             <p>
               Kami Menyediakan Kerajinan Bambu. Anda Juga Bisa Melakukan Request Untuk Dibuatkan Suatu Kerajinan Dari Bambu.
-              Lokasi Kami Terletak di Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunung Kidul.
+              Lokasi Kami Terletak di Dusun Mandesan, Desa Semin, Kecamatan Semin, Kabupaten Gunungkidul.
             </p>
           </div>
         </div>
